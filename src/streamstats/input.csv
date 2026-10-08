@@ -1,0 +1,5 @@
+timestamp,level,source,message
+2026-10-08T10:00:00Z,INFO,auth-service,User logged in successfully
+2026-10-08T10:01:15Z,ERROR,payment-gate,Connection timeout during payment process
+2026-10-08T10:02:00Z,CRITICAL,payment-gate,Database connection lost
+2026-10-08T10:05:30Z,WARNING,billing,High memory consumption detected
