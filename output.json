@@ -1,0 +1,27 @@
+{
+    "total_events": 8,
+    "levels_counters": {
+        "DEBUG": 0,
+        "INFO": 0,
+        "WARNING": 0,
+        "ERROR": 6,
+        "CRITICAL": 2
+    },
+    "sources_counters": {
+        "auth-service1": 2,
+        "payment-gate1": 2,
+        "payment-gate2": 2,
+        "a": 1,
+        "b": 1
+    },
+    "top_errors_sources": {
+        "auth-service1": 2,
+        "payment-gate1": 2,
+        "payment-gate2": 2,
+        "a": 1,
+        "b": 1
+    },
+    "first_timestamp": "2026-10-08T10:06:00+03:00",
+    "last_timestamp": "2026-10-08T10:02:00Z",
+    "invalid_events_skipped": 0
+}
