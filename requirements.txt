@@ -1,0 +1,7 @@
+iniconfig==2.3.1
+packaging==26.3
+pluggy==1.6.0
+Pygments==2.21.0
+pytest==9.1.1
+-e git+https://github.com/DeFchanels/MAI_Laboratory_work_2.git@e6d249e048b8802db46e6396deff6d2ab14e4550#egg=streamstats
+uv==0.12.23
