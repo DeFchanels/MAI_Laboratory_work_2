@@ -1,4 +1,2 @@
-{"timestamp": "2026-10-08T10:00:00Z", "level": "ERROR", "source": "auth-service1", "message": "User logged in"}
-{"timestamp": "2026-10-08T10:01:15Z", "level": "ERROR", "source": "payment-gate1", "message": "Connection timeout"}
-{"timestamp": "2026-10-08T10:02:00Z", "level": "CRITICAL", "source": "payment-gate2", "message": "Database unreachable"}
-{"timestamp": "2026-10-08T10:06:00+03:00", "level": "ERROR", "source": "b", "message": "Invalid token"}
+{"timestamp": "2026-10-09T10:00:00Z", "level": "ERROR", "source": "auth", "message": "error"}
+{"timestamp": "2026-10-09T15:00:00Z", "level": "CRITICAL", "source": "reg", "message": "critical error"}

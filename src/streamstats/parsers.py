@@ -1,46 +1,44 @@
 import csv, json
 from streamstats.errors import UnsupportedFileFormatError, CLIConfigureError, IncorrectEventError
-from streamstats.models import Event
 from pathlib import Path
+import logging
+from globals import report
 
 
-def parse_file(file_path, file_format, events, skip_invalid):
-    skipped_events = 0
+logger = logging.getLogger(__name__)
+
+
+def parse_file(file_path, file_format, skip_invalid):
     try:
         with open(file_path, 'r') as file:
             if file_format == "csv": # Если введенный тип файла csv
                 if Path(file_path).suffix.lower() == ".csv":
                     reader = csv.DictReader(file, strict=True)
-                    for number, line in enumerate(reader, 1):
+                    for number, line in enumerate(reader, 2):
                         event_data = line
-                        if skip_invalid:
-                            try:
-                                event = Event.get_event_from_dict(event_data, file_path, number)
-                                events.append(event)
-                            except IncorrectEventError:
-                                skipped_events += 1
-                        else:
-                            event = Event.get_event_from_dict(event_data, file_path, number)
-                            events.append(event)
+                        yield event_data, number
                 else:
                     raise CLIConfigureError(f"File type is not csv: {file_path}")
-            elif file_format == "jsonl":
-                try:
+            elif file_format == "jsonl": # Если введенный тип файла jsonl
+                if Path(file_path).suffix.lower() == ".jsonl":
                     for number, line in enumerate(file, 1):
-                        event_data = json.loads(line)
-                        if skip_invalid:
-                            try:
-                                event = Event.get_event_from_dict(event_data, file_path, number)
-                                events.append(event)
-                            except IncorrectEventError:
-                                skipped_events += 1
-                        else:
-                            event = Event.get_event_from_dict(event_data, file_path, number)
-                            events.append(event)
-                except json.decoder.JSONDecodeError:
-                    raise CLIConfigureError(f"Error occurred while reading a file: {file_path}")
+                        try:
+                            event_data = json.loads(line)
+                            yield event_data, number
+                        except json.decoder.JSONDecodeError:
+                            if not skip_invalid:
+                                raise IncorrectEventError(
+                                    f"Error occurred while reading a file line: {file_path}, line: {number}")
+                            else:
+                                logger.warning(
+                                    f"Error occurred while reading a file line: {file_path}, line: {number}"
+                                )
+                                report["invalid_events_skipped"] += 1
+                                report["total_events"] += 1
+                else:
+                    raise CLIConfigureError(f"File type is not jsonl: {file_path}")
             else:
                 raise UnsupportedFileFormatError(f"Invalid file format: {file_format}")
     except FileNotFoundError:
         raise CLIConfigureError(f"File not found: {file_path}")
-    return events, skipped_events
+    return None

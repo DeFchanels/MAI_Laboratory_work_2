@@ -6,7 +6,7 @@ from streamstats.errors import UnsupportedTimestampFormatError, IncorrectEventEr
 levels = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
 @dataclass
-class Event:
+class Event: # Класс для события
     timestamp: datetime
     level: str
     source: str

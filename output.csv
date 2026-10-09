@@ -1,0 +1,2 @@
+total_events,total_valid_events,levels_counters,sources_counters,top_errors_sources,first_timestamp,last_timestamp,invalid_events_skipped
+4,4,"{'DEBUG': 0, 'INFO': 1, 'WARNING': 1, 'ERROR': 1, 'CRITICAL': 1}","{'auth': 2, 'reg': 2}","{'auth': 1, 'reg': 1}",2026-10-09T10:00:00Z,2026-10-09T15:00:00Z,0

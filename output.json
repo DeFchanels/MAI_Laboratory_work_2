@@ -1,27 +1,22 @@
 {
-    "total_events": 8,
+    "total_events": 4,
+    "total_valid_events": 4,
     "levels_counters": {
         "DEBUG": 0,
-        "INFO": 0,
-        "WARNING": 0,
-        "ERROR": 6,
-        "CRITICAL": 2
+        "INFO": 1,
+        "WARNING": 1,
+        "ERROR": 1,
+        "CRITICAL": 1
     },
     "sources_counters": {
-        "auth-service1": 2,
-        "payment-gate1": 2,
-        "payment-gate2": 2,
-        "a": 1,
-        "b": 1
+        "auth": 2,
+        "reg": 2
     },
     "top_errors_sources": {
-        "auth-service1": 2,
-        "payment-gate1": 2,
-        "payment-gate2": 2,
-        "a": 1,
-        "b": 1
+        "auth": 1,
+        "reg": 1
     },
-    "first_timestamp": "2026-10-08T10:06:00+03:00",
-    "last_timestamp": "2026-10-08T10:02:00Z",
+    "first_timestamp": "2026-10-09T10:00:00Z",
+    "last_timestamp": "2026-10-09T15:00:00Z",
     "invalid_events_skipped": 0
 }
