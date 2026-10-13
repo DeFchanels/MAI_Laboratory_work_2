@@ -1,10 +1,11 @@
 import argparse
-import sys
 import logging
+import sys
+
+from globals import report
 from streamstats.analysis import analyser
 from streamstats.errors import StreamStatsError
 from streamstats.parsers import parse_file
-from globals import report
 from streamstats.report import make_report
 
 

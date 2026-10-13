@@ -1,6 +1,7 @@
 import pytest
+
+from streamstats.errors import CLIConfigureError, IncorrectEventError
 from streamstats.parsers import parse_file
-from streamstats.errors import IncorrectEventError, CLIConfigureError
 
 
 def test_parse_csv(tmp_path): # Парсинг файла csv
@@ -12,8 +13,8 @@ def test_parse_csv(tmp_path): # Парсинг файла csv
     )
 
     events = list(parse_file(str(csv_file), "csv", False))
-    event_1, line_num_1 = events[0]
-    event_2, line_num_2 = events[1]
+    event_1 = events[0][0]
+    event_2 = events[1][0]
     assert len(events) == 2
     assert event_1["source"] == "auth"
     assert event_1["level"] == "WARNING"
@@ -32,8 +33,8 @@ def test_parse_jsonl(tmp_path): # Парсинг файла jsonl
     )
 
     events = list(parse_file(str(file), "jsonl", False))
-    event_1, line_num_1 = events[0]
-    event_2, line_num_2 = events[1]
+    event_1 = events[0][0]
+    event_2 = events[1][0]
     assert len(events) == 2
     assert event_1["source"] == "auth"
     assert event_1["level"] == "WARNING"
@@ -47,7 +48,7 @@ def test_parse_jsonl(tmp_path): # Парсинг файла jsonl
 
 def test_parse_file_not_found(): # Введенный файл не найден
     with pytest.raises(CLIConfigureError):
-        events = list(parse_file("non_existent_file.csv", "csv", False))
+        list(parse_file("non_existent_file.csv", "csv", False))
 
 
 def test_parse_broken_jsonl_file(tmp_path): # Во время чтения jsonl файла встретилась поломанная строка (флаг skip-invalid = False)

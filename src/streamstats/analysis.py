@@ -1,9 +1,9 @@
 import datetime
-from globals import report
-from streamstats.models import Event
-from streamstats.errors import IncorrectEventError, UnsupportedTimestampFormatError
 import logging
 
+from globals import report
+from streamstats.errors import IncorrectEventError, UnsupportedTimestampFormatError
+from streamstats.models import Event
 
 levels = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 logger = logging.getLogger(__name__)

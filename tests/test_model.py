@@ -1,7 +1,9 @@
-import pytest
 from datetime import datetime, timezone
-from streamstats.models import Event
+
+import pytest
+
 from streamstats.errors import IncorrectEventError, UnsupportedTimestampFormatError
+from streamstats.models import Event
 
 
 def test_event_valid_creation(): # Обычный случай

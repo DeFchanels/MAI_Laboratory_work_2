@@ -1,5 +1,6 @@
-import json
 import csv
+import json
+
 from globals import report
 
 

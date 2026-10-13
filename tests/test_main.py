@@ -1,8 +1,10 @@
 import json
-import pytest
 import sys
-from streamstats.__main__ import main
+
+import pytest
+
 from globals import report
+from streamstats.__main__ import main
 
 
 @pytest.fixture(autouse=True) # Перед каждым тестом очищаем глобальную переменную report

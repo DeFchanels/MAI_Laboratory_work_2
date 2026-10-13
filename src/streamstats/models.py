@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from streamstats.errors import UnsupportedTimestampFormatError, IncorrectEventError
 
+from streamstats.errors import IncorrectEventError, UnsupportedTimestampFormatError
 
 levels = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 

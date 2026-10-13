@@ -1,4 +1,5 @@
 import pytest
+
 from globals import report
 from streamstats.analysis import analyser
 

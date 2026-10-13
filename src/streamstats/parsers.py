@@ -1,9 +1,14 @@
-import csv, json
-from streamstats.errors import UnsupportedFileFormatError, CLIConfigureError, IncorrectEventError
-from pathlib import Path
+import csv
+import json
 import logging
-from globals import report
+from pathlib import Path
 
+from globals import report
+from streamstats.errors import (
+    CLIConfigureError,
+    IncorrectEventError,
+    UnsupportedFileFormatError,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -41,4 +46,3 @@ def parse_file(file_path, file_format, skip_invalid):
                 raise UnsupportedFileFormatError(f"Invalid file format: {file_format}")
     except FileNotFoundError:
         raise CLIConfigureError(f"File not found: {file_path}")
-    return None
